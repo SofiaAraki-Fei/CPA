@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulário de Avaliação CPA 2025</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 150px;
+      }
+      h2 {
+        font-size: 30px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      select,
+      button {
+        padding: 5px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Questionário de Avaliação das Disciplinas - CPA</h2>
+
+    <label for="curso">Selecione seu curso:</label>
+    <select id="curso" onchange="gerarTabela()">
+      <option value="">-- Selecione --</option>
+      <option value="teste">Teste</option>
+      <option value="mecanica">Engenharia Mecânica</option>
+      <option value="eletrica">Engenharia Elétrica</option>
+      <option value="producao">Engenharia de Produção</option>
+      <option value="civil">Engenharia Civil</option>
+      <option value="adm">Administração</option>
+      <option value="contabeis">Ciências Contábeis</option>
+      <option value="rh">Recursos Humanos</option>
+      <option value="pedagogia">Pedagogia</option>
+    </select>
+
+    <form id="formularioCPA" onsubmit="enviarFormulario(event)">
+      <div id="tabela-container"></div>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+      const disciplinasPorCurso = {
+        teste: ["teste"],
+        mecanica: ["Cálculo I", "Física I", "Desenho Técnico"],
+        eletrica: [
+          "Circuitos Elétricos",
+          "Eletromagnetismo",
+          "Matemática Discreta",
+        ],
+        producao: ["Logística", "Gestão da Qualidade", "Cálculo Aplicado"],
+        civil: ["Materiais de Construção", "Topografia", "Estruturas"],
+        adm: [
+          "Teoria Geral da Administração",
+          "Marketing",
+          "Contabilidade Geral",
+        ],
+        contabeis: [
+          "Contabilidade Intermediária",
+          "Auditoria",
+          "Legislação Tributária",
+        ],
+        rh: [
+          "Gestão por Competência",
+          "Atração e Seleção de Talentos",
+          //"Capacitação e Desenvolvimento de Talentos",
+          // "Gestão de Desenpenho",
+          // "Remuneração de Desempenho",
+          // "Gestão de Carreiras",
+          // "Projeto III - Plano de Ação",
+        ],
+        pedagogia: ["Didática", "História da Educação", "Educação Infantil"],
+      };
+
+      const perguntas = [
+        "01. Conhecimento sobre os objetivos da disciplina.",
+        "02. Bibliografia indicada.",
+        "03. Apresentação do Plano de Ensino.",
+        "04. Domínio dos conteúdos pelo professor.",
+        "05. Clareza no desenvolvimento dos conteúdos.",
+        "06. Interação professor/aluno.",
+        "07. Didática utilizada.",
+        "08. Incentivo à participação.",
+        "09. Uso de novos métodos e tecnologias.",
+        "10. Sistema de avaliação.",
+        "11. Discussão dos resultados das avaliações.",
+        "12. Pontualidade do professor.",
+        "13. Equipamentos nos laboratórios.",
+        "14. Acervo da biblioteca.",
+      ];
+
+      function gerarTabela() {
+        const curso = document.getElementById("curso").value;
+        const disciplinas = disciplinasPorCurso[curso];
+        const container = document.getElementById("tabela-container");
+        if (!disciplinas) return (container.innerHTML = "");
+
+        let html = "<table><tr><th>Critério / Disciplina</th>";
+        disciplinas.forEach((d) => (html += `<th>${d}</th>`));
+        html += "</tr>";
+
+        perguntas.forEach((p, i) => {
+          html += `<tr><td>${p}</td>`;
+          disciplinas.forEach((d, j) => {
+            html += `<td><select name="resp_${i}_${j}" required>
+                      <option value="">-</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select></td>`;
+          });
+          html += "</tr>";
+        });
+
+        container.innerHTML = html + "</table>";
+      }
+
+      function enviarFormulario(event) {
+        event.preventDefault();
+
+        const curso = document.getElementById("curso").value;
+        if (!curso) return alert("Selecione um curso.");
+
+        const disciplinas = disciplinasPorCurso[curso];
+        if (!disciplinas) return alert("Curso inválido.");
+
+        const formData = new FormData();
+
+        disciplinas.forEach((disciplina, j) => {
+          perguntas.forEach((pergunta, i) => {
+            const campo = document.querySelector(
+              `select[name="resp_${i}_${j}"]`
+            );
+            if (campo && campo.value) {
+              const respostaObj = {
+                curso,
+                disciplina,
+                pergunta,
+                nota: campo.value,
+              };
+              formData.append("respostas[]", JSON.stringify(respostaObj));
+            }
+          });
+        });
+
+        // Para debug: mostre quantos itens serão enviados
+        console.log(
+          `Enviando ${formData.getAll("respostas[]").length} respostas`
+        );
+
+        fetch(
+          "https://script.google.com/macros/s/AKfycbwKHpS3ZGYzZ6X6sLguBBoMv_4lz2lmPX7AG-PThv2-XgqC1ao2M6_HQWd-09xSpIDMrw/exec",
+          {
+            method: "POST",
+            body: formData,
+            // NÃO setar headers, o fetch cuida disso para multipart/form-data
+          }
+        )
+          .then((res) => res.text())
+          .then((msg) => alert("Resposta registrada com sucesso!"))
+          .catch((err) => alert("Erro ao enviar: " + err));
+      }
+    </script>
+  </body>
+</html>
