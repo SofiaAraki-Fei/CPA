@@ -6,56 +6,74 @@
     <title>Formulário de Avaliação CPA 2025</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 100px;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 20px;
       }
-      form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+
       h2 {
-        font-size: 30px;
-      }
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        margin-top: 20px;
-        display: flex;
-      }
-      th,
-      td {
-        border: 1px solid #ccc;
-        padding: 8px;
         text-align: center;
+        color: #004080;
+        margin-bottom: 10px;
       }
-      th {
-        background-color: #f2f2f2;
-      }
-      select {
-        margin-top: 5px;
-        padding: 10px 30px;
-      }
-      button {
-        padding: 5px 20px;
-        margin-top: 10px;
-      }
-      button {
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-        height: 50px;
-      }
-      button:hover {
-        background-color: #45a049;
-      }
+
       h3 {
-        text-align: center;
+        background-color: #e6f0ff;
+        padding: 20px;
+        border-left: 5px solid #004080;
+        border-radius: 5px;
+        font-weight: normal;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 20px;
+      }
+
+      select {
+        width: 100%;
+        max-width: 400px;
+        padding: 8px;
+        margin-top: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      form {
+        margin-top: 30px;
+      }
+
+      #tabela-container {
+        margin-top: 20px;
+      }
+
+      button[type="submit"] {
+        background-color: #004080;
+        color: white;
+        padding: 12px 100px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #003366;
+      }
+
+      @media (max-width: 600px) {
+        h3 {
+          font-size: 14px;
+        }
+
+        button[type="submit"] {
+          width: 100%;
+        }
       }
     </style>
   </head>
@@ -68,71 +86,80 @@
       em marcar o ponto da escala que melhor expressa sua opinião. Sua
       participação é muito importante, pois essas informações subsidiarão
       futuras ações na instituição. <br /><br />
-      1. MUITO BOM 2. BOM 3. REGULAR 4. INSUFICIENTE 5. NÃO SE APLICA
+      <center>
+        <b>1. MUITO BOM 2. BOM 3. REGULAR 4. INSUFICIENTE 5. NÃO SE APLICA</b>
+      </center>
     </h3>
-    <label for="curso">Selecione seu curso:</label>
-    <select id="curso" onchange="gerarTabela()">
-      <option value="">-- Selecione --</option>
+    <center>
+      <label for="curso">Selecione seu curso:</label>
+      <select id="curso" onchange="gerarTabela()">
+        <option value="">-- Selecione --</option>
 
-      <optgroup label="Presenciais">
-        <option value="mecanica1">Engenharia Mecânica - 1º</option>
-        <option value="mecanica3">Engenharia Mecânica - 3º</option>
-        <option value="mecanica5">Engenharia Mecânica - 5º</option>
-        <option value="mecanica6">Engenharia Mecânica - 6º</option>
-        <option value="mecanica7">Engenharia Mecânica - 7º</option>
-        <option value="mecanica8">Engenharia Mecânica - 8º</option>
-        <option value="mecanica9">Engenharia Mecânica - 9º</option>
-        <option value="producao5">Engenharia de Produção - 5º</option>
-        <option value="producao6">Engenharia de Produção - 6º</option>
-        <option value="producao7">Engenharia de Produção - 7º</option>
-        <option value="producao8">Engenharia de Produção - 8º</option>
-        <option value="eletrica6">Engenharia Elétrica - 6º</option>
-        <option value="eletrica7">Engenharia Elétrica - 7º</option>
-        <option value="eletrica8">Engenharia Elétrica - 8º</option>
-        <option value="eletrica9">Engenharia Elétrica - 9º</option>
-        <option value="civil5">Engenharia Civil - 5º</option>
-        <option value="civil7">Engenharia Civil - 7º</option>
-        <option value="civil8">Engenharia Civil - 8º</option>
-        <option value="civil9">Engenharia Civil - 9º</option>
-        <option value="adm1">Administração - 1º</option>
-        <option value="adm3">Administração - 3º</option>
-        <option value="adm5">Administração - 5º</option>
-        <option value="adm6">Administração - 6º</option>
-        <option value="adm7">Administração - 7º</option>
-        <option value="adm8">Administração - 8º</option>
-        <option value="contabeis5">Ciências Contábeis - 5º</option>
-        <option value="contabeis7">Ciências Contábeis - 7º</option>
-        <option value="contabeis8">Ciências Contábeis - 8º</option>
-        <option value="pedagogia1">Pedagogia - 1º</option>
-      </optgroup>
+        <optgroup label="Presenciais">
+          <option value="mecanica1">Engenharia Mecânica - 1º</option>
+          <option value="mecanica3">Engenharia Mecânica - 3º</option>
+          <option value="mecanica5">Engenharia Mecânica - 5º</option>
+          <option value="mecanica6">Engenharia Mecânica - 6º</option>
+          <option value="mecanica7">Engenharia Mecânica - 7º</option>
+          <option value="mecanica8">Engenharia Mecânica - 8º</option>
+          <option value="mecanica9">Engenharia Mecânica - 9º</option>
+          <option value="producao5">Engenharia de Produção - 5º</option>
+          <option value="producao6">Engenharia de Produção - 6º</option>
+          <option value="producao7">Engenharia de Produção - 7º</option>
+          <option value="producao8">Engenharia de Produção - 8º</option>
+          <option value="eletrica6">Engenharia Elétrica - 6º</option>
+          <option value="eletrica7">Engenharia Elétrica - 7º</option>
+          <option value="eletrica8">Engenharia Elétrica - 8º</option>
+          <option value="eletrica9">Engenharia Elétrica - 9º</option>
+          <option value="civil5">Engenharia Civil - 5º</option>
+          <option value="civil7">Engenharia Civil - 7º</option>
+          <option value="civil8">Engenharia Civil - 8º</option>
+          <option value="civil9">Engenharia Civil - 9º</option>
+          <option value="adm1">Administração - 1º</option>
+          <option value="adm3">Administração - 3º</option>
+          <option value="adm5">Administração - 5º</option>
+          <option value="adm6">Administração - 6º</option>
+          <option value="adm7">Administração - 7º</option>
+          <option value="adm8">Administração - 8º</option>
+          <option value="contabeis5">Ciências Contábeis - 5º</option>
+          <option value="contabeis7">Ciências Contábeis - 7º</option>
+          <option value="contabeis8">Ciências Contábeis - 8º</option>
+          <option value="pedagogia1">Pedagogia - 1º</option>
+        </optgroup>
 
-      <optgroup label="EAD">
-        <option value="rh">Recursos Humanos</option>
-        <option value="adm1_ead">Administração - 1º (EAD)</option>
-        <option value="adm2_ead">Administração - 2º (EAD)</option>
-        <option value="adm3_ead">Administração - 3º (EAD)</option>
-        <option value="adm5_ead">Administração - 5º (EAD)</option>
-        <option value="adm7_ead">Administração - 7º (EAD)</option>
-        <option value="contabeis1_ead">Ciências Contábeis - 1º (EAD)</option>
-        <option value="contabeis3_ead">Ciências Contábeis - 3º (EAD)</option>
-        <option value="contabeis5_ead">Ciências Contábeis - 5º (EAD)</option>
-        <option value="contabeis6_ead">Ciências Contábeis - 6º (EAD)</option>
-        <option value="contabeis7_ead">Ciências Contábeis - 7º (EAD)</option>
-        <option value="contabeis8_ead">Ciências Contábeis - 8º (EAD)</option>
-        <option value="pedagogia1_ead">
-          Pedagogia - 1º / Turma 21 e 22 (EAD)
-        </option>
-        <option value="pedagogia3_ead">Pedagogia - 3º / Turma 24 (EAD)</option>
-        <option value="pedagogia5_ead">Pedagogia - 5º / Turma 23 (EAD)</option>
-        <option value="pedagogia7_ead">Pedagogia - 7º / Turma 21 e 22 (EAD)</option>
-      </optgroup>
-    </select>
+        <optgroup label="EAD">
+          <option value="rh">Recursos Humanos</option>
+          <option value="adm1_ead">Administração - 1º (EAD)</option>
+          <option value="adm2_ead">Administração - 2º (EAD)</option>
+          <option value="adm3_ead">Administração - 3º (EAD)</option>
+          <option value="adm5_ead">Administração - 5º (EAD)</option>
+          <option value="adm7_ead">Administração - 7º (EAD)</option>
+          <option value="contabeis1_ead">Ciências Contábeis - 1º (EAD)</option>
+          <option value="contabeis3_ead">Ciências Contábeis - 3º (EAD)</option>
+          <option value="contabeis5_ead">Ciências Contábeis - 5º (EAD)</option>
+          <option value="contabeis6_ead">Ciências Contábeis - 6º (EAD)</option>
+          <option value="contabeis7_ead">Ciências Contábeis - 7º (EAD)</option>
+          <option value="contabeis8_ead">Ciências Contábeis - 8º (EAD)</option>
+          <option value="pedagogia1_ead">
+            Pedagogia - 1º / Turma 21 e 22 (EAD)
+          </option>
+          <option value="pedagogia3_ead">
+            Pedagogia - 3º / Turma 24 (EAD)
+          </option>
+          <option value="pedagogia5_ead">
+            Pedagogia - 5º / Turma 23 (EAD)
+          </option>
+          <option value="pedagogia7_ead">
+            Pedagogia - 7º / Turma 21 e 22 (EAD)
+          </option>
+        </optgroup>
+      </select>
 
-    <form id="formularioCPA" onsubmit="enviarFormulario(event)">
-      <div id="tabela-container"></div>
-      <button type="submit">Enviar</button>
-    </form>
-
+      <form id="formularioCPA" onsubmit="enviarFormulario(event)">
+        <div id="tabela-container"></div>
+        <button type="submit">Enviar</button>
+      </form>
+    </center>
     <script>
       const disciplinasPorCurso = {
         //Presencial
