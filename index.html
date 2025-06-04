@@ -25,6 +25,7 @@
         border-left: 5px solid #004080;
         border-radius: 5px;
         font-weight: normal;
+        text-align: center;
       }
 
       label {
@@ -45,6 +46,7 @@
 
       form {
         margin-top: 30px;
+        text-align: center;
       }
 
       #tabela-container {
@@ -64,6 +66,12 @@
 
       button[type="submit"]:hover {
         background-color: #003366;
+      }
+
+      p {
+        text-align: center;
+        color: red;
+        font-weight: bold;
       }
 
       @media (max-width: 600px) {
@@ -86,10 +94,13 @@
       em marcar o ponto da escala que melhor expressa sua opinião. Sua
       participação é muito importante, pois essas informações subsidiarão
       futuras ações na instituição. <br /><br />
-      <center>
-        <b>1. MUITO BOM 2. BOM 3. REGULAR 4. INSUFICIENTE 5. NÃO SE APLICA</b>
-      </center>
+      <b>5. MUITO BOM 4. BOM 3. REGULAR 2. INSUFICIENTE 1. NÃO SE APLICA</b>
     </h3>
+    <p>
+      ATENÇÃO ALUNOS QUE FAZEM CURSO TOTALMENTE EAD <br />
+      Fiquem atentos ao escolherem o curso, pois cada curso tem uma abreviação
+      (EAD) na frente.
+    </p>
     <center>
       <label for="curso">Selecione seu curso:</label>
       <select id="curso" onchange="gerarTabela()">
