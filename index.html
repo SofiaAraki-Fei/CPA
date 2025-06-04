@@ -10,7 +10,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 150px;
+        margin: 100px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
       h2 {
         font-size: 30px;
@@ -19,6 +24,7 @@
         border-collapse: collapse;
         width: 100%;
         margin-top: 20px;
+        display: flex;
       }
       th,
       td {
@@ -29,28 +35,97 @@
       th {
         background-color: #f2f2f2;
       }
-      select,
+      select {
+        margin-top: 5px;
+        padding: 10px 30px;
+      }
       button {
-        padding: 5px;
+        padding: 5px 20px;
         margin-top: 10px;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        height: 50px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      h3 {
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <h2>Questionário de Avaliação das Disciplinas - CPA</h2>
-
+    <h3>
+      Prezado(a) aluno(a), Este questionário tem por objetivo avaliar as
+      disciplinas cursadas por você neste semestre. Para responder a cada item
+      do questionário há uma escala de 5 (cinco) conceitos e sua tarefa consiste
+      em marcar o ponto da escala que melhor expressa sua opinião. Sua
+      participação é muito importante, pois essas informações subsidiarão
+      futuras ações na instituição. <br /><br />
+      1. MUITO BOM 2. BOM 3. REGULAR 4. INSUFICIENTE 5. NÃO SE APLICA
+    </h3>
     <label for="curso">Selecione seu curso:</label>
     <select id="curso" onchange="gerarTabela()">
       <option value="">-- Selecione --</option>
-      <option value="teste">Teste</option>
-      <option value="mecanica">Engenharia Mecânica</option>
-      <option value="eletrica">Engenharia Elétrica</option>
-      <option value="producao">Engenharia de Produção</option>
-      <option value="civil">Engenharia Civil</option>
-      <option value="adm">Administração</option>
-      <option value="contabeis">Ciências Contábeis</option>
-      <option value="rh">Recursos Humanos</option>
-      <option value="pedagogia">Pedagogia</option>
+
+      <optgroup label="Presenciais">
+        <option value="mecanica1">Engenharia Mecânica - 1º</option>
+        <option value="mecanica3">Engenharia Mecânica - 3º</option>
+        <option value="mecanica5">Engenharia Mecânica - 5º</option>
+        <option value="mecanica6">Engenharia Mecânica - 6º</option>
+        <option value="mecanica7">Engenharia Mecânica - 7º</option>
+        <option value="mecanica8">Engenharia Mecânica - 8º</option>
+        <option value="mecanica9">Engenharia Mecânica - 9º</option>
+        <option value="producao5">Engenharia de Produção - 5º</option>
+        <option value="producao6">Engenharia de Produção - 6º</option>
+        <option value="producao7">Engenharia de Produção - 7º</option>
+        <option value="producao8">Engenharia de Produção - 8º</option>
+        <option value="eletrica6">Engenharia Elétrica - 6º</option>
+        <option value="eletrica7">Engenharia Elétrica - 7º</option>
+        <option value="eletrica8">Engenharia Elétrica - 8º</option>
+        <option value="eletrica9">Engenharia Elétrica - 9º</option>
+        <option value="civil5">Engenharia Civil - 5º</option>
+        <option value="civil7">Engenharia Civil - 7º</option>
+        <option value="civil8">Engenharia Civil - 8º</option>
+        <option value="civil9">Engenharia Civil - 9º</option>
+        <option value="adm1">Administração - 1º</option>
+        <option value="adm3">Administração - 3º</option>
+        <option value="adm5">Administração - 5º</option>
+        <option value="adm6">Administração - 6º</option>
+        <option value="adm7">Administração - 7º</option>
+        <option value="adm8">Administração - 8º</option>
+        <option value="contabeis5">Ciências Contábeis - 5º</option>
+        <option value="contabeis7">Ciências Contábeis - 7º</option>
+        <option value="contabeis8">Ciências Contábeis - 8º</option>
+        <option value="pedagogia1">Pedagogia - 1º</option>
+      </optgroup>
+
+      <optgroup label="EAD">
+        <option value="rh">Recursos Humanos</option>
+        <option value="adm1_ead">Administração - 1º (EAD)</option>
+        <option value="adm2_ead">Administração - 2º (EAD)</option>
+        <option value="adm3_ead">Administração - 3º (EAD)</option>
+        <option value="adm5_ead">Administração - 5º (EAD)</option>
+        <option value="adm7_ead">Administração - 7º (EAD)</option>
+        <option value="contabeis1_ead">Ciências Contábeis - 1º (EAD)</option>
+        <option value="contabeis3_ead">Ciências Contábeis - 3º (EAD)</option>
+        <option value="contabeis5_ead">Ciências Contábeis - 5º (EAD)</option>
+        <option value="contabeis6_ead">Ciências Contábeis - 6º (EAD)</option>
+        <option value="contabeis7_ead">Ciências Contábeis - 7º (EAD)</option>
+        <option value="contabeis8_ead">Ciências Contábeis - 8º (EAD)</option>
+        <option value="pedagogia1_ead">
+          Pedagogia - 1º / Turma 21 e 22 (EAD)
+        </option>
+        <option value="pedagogia3_ead">Pedagogia - 3º / Turma 24 (EAD)</option>
+        <option value="pedagogia5_ead">Pedagogia - 5º / Turma 23 (EAD)</option>
+        <option value="pedagogia7_ead">Pedagogia - 7º / Turma 21 e 22 (EAD)</option>
+      </optgroup>
     </select>
 
     <form id="formularioCPA" onsubmit="enviarFormulario(event)">
@@ -60,35 +135,368 @@
 
     <script>
       const disciplinasPorCurso = {
-        teste: ["teste"],
-        mecanica: ["Cálculo I", "Física I", "Desenho Técnico"],
-        eletrica: [
-          "Circuitos Elétricos",
-          "Eletromagnetismo",
-          "Matemática Discreta",
+        //Presencial
+        mecanica1: [
+          "Cálculo Diferencial e Integral I",
+          "Introdução à Ciência da Computação",
+          "Introdução à Engenharia",
+          "Química Tecnológica e Experimental",
+          "Cálculo Diferencial e Integral I",
+          "Administração para Engenheiros",
         ],
-        producao: ["Logística", "Gestão da Qualidade", "Cálculo Aplicado"],
-        civil: ["Materiais de Construção", "Topografia", "Estruturas"],
-        adm: [
-          "Teoria Geral da Administração",
-          "Marketing",
-          "Contabilidade Geral",
+        mecanica3: [
+          "Física Geral e Experimental II",
+          "Princípio de Metrologia Industrial",
+          "Cálculo Diferencial e Integral III",
+          "Desenho Técnico Mecânico",
+          "Álgebra Linear",
+          "Engenharia e Ciência dos Materiais",
+          "Redação e Produção de Texto",
         ],
-        contabeis: [
-          "Contabilidade Intermediária",
-          "Auditoria",
-          "Legislação Tributária",
+        mecanica5: [
+          "Ensaios Mecânicos",
+          "Estática Aplicada às Máquinas",
+          "Mecânica dos Fluidos",
+          "Eletricidade",
+          "Usinagem de Metais",
+          "Economia",
         ],
+        mecanica6: [
+          "Ensaios Mecânicos",
+          "Transferência de Calor e Massa",
+          "Mecânica dos Fluidos",
+          "Máquinas Elétricas",
+          "Usinagem de Metais	Economia",
+          "Higiene e Segurança Industrial",
+        ],
+        mecanica7: [
+          "Dinâmica dos Sistemas Mecânicos",
+          "Transferência de Calor e Massa",
+          "Elementos de Máquinas II",
+          "Máquinas Elétricas",
+          "Termodinâmica II",
+          "Higiene e Segurança Industrial",
+        ],
+        mecanica8: [
+          "Máquinas Térmicas",
+          "Transferência de Calor e Massa",
+          "Processos Metalúrgicos",
+          "Termodinâmica II",
+          "Projeto Integrado (TCC I)",
+          "Empreendedorismo",
+        ],
+        mecanica9: [
+          "Máquinas Térmicas",
+          "Contabilidade e Custos Industriais",
+          "Processos Metalúrgicos",
+          "Manutenção Industrial",
+          "Projeto Integrado (TCC I)",
+          "Empreendedorismo",
+        ],
+        producao5: [
+          "Mecânica Geral",
+          "Planejamento, Programação e Controle da Produção I",
+          "Mecânica dos Fluidos",
+          "Eletricidade",
+          "Estratégia Empresarial",
+          "Economia",
+        ],
+        producao6: [
+          "Logística Empresarial I",
+          "Planejamento, Programação e Controle da Produção I",
+          "Pesquisa Operacional",
+          "Estudos de Tempos e Métodos",
+          "Manutenção Industrial",
+          "Higiene e Segurança Industrial",
+          "Economia",
+        ],
+        producao7: [
+          "Logística Empresarial I",
+          "Gestão Financeira",
+          "Pesquisa Operacional",
+          "Estudos de Tempos e Métodos",
+          "Manutenção Industrial",
+          "Higiene e Segurança Industrial",
+        ],
+        producao8: [
+          "Logística Empresarial I",
+          "Gestão Financeira",
+          "Pesquisa Operacional",
+          "Estudos de Tempos e Métodos",
+          "Manutenção Industrial",
+          "Higiene e Segurança Industrial",
+          "Economia",
+        ],
+        eletrica6: [
+          "Eletrônica Digital e Laboratório",
+          "Projeto Assistido por Computador",
+          "Mecânica dos Fluidos",
+          "Introdução a Sistemas de Energia Elétrica",
+          "Análise Linear de Sistema",
+          "Engenharia Econômica",
+          "Tópicos Jurídicos",
+        ],
+        eletrica7: [
+          "Eletrônica Digital e Laboratório",
+          "Transferência de Calor e Massa",
+          "Instalações Elétricas I",
+          "Introdução a Sistemas de Energia Elétrica",
+          "Análise Linear de Sistema",
+          "Higiene e Segurança Industrial",
+        ],
+        eletrica8: [
+          "Princípio de Comunicação I",
+          "Instalações Elétricas II",
+          "Fundamentos de Redes de Computadores",
+          "Sistema de Controle",
+          "Conversão de Energia I",
+          "Projeto Integrado (TCC I)",
+          "Empreendedorismo",
+        ],
+        eletrica9: [
+          "Princípio de Comunicação I",
+          "Instalações Elétricas II",
+          "Fundamentos de Redes de Computadores",
+          "Sistema de Controle",
+          "Conversão de Energia I",
+          "Projeto Integrado (TCC I)",
+          "Empreendedorismo",
+        ],
+        civil5: [
+          "Arquitetura e Urbanismo",
+          "Mecânica dos Solos I",
+          "Resistência dos Materiais I",
+          "Modelagem 3D",
+          "Fenômeno de Transportes",
+          "Hidrologia",
+          "Eletricidade Aplicada",
+        ],
+        civil7: [
+          "Teoria das Estruturas",
+          "Hidrologia",
+          "Construção Civil I",
+          "Hidráulica II",
+          "Fundações I",
+          "Metodologia Bim",
+          "Saneamento",
+        ],
+        civil8: [
+          "Estrutura Metálica e de Madeira II",
+          "Estrutura Metálica e de Madeira I",
+          "Gerenciamento e Planejamento de Obras I",
+          "Concreto I",
+          "Transporte",
+          "Metodologia Bim",
+          "Patologia",
+          "Saneamento",
+          "Avaliações e Perícias	",
+        ],
+        civil9: [
+          "Estrutura Metálica e de Madeira II",
+          "Concreto II",
+          "Gerenciamento e Planejamento de Obras I",
+          "Estradas e Pavimentos II",
+          "Transporte",
+          "Metodologia Bim",
+          "Patologia",
+          "Saneamento",
+          "Avaliações e Perícias	",
+        ],
+        adm1: [
+          "Introdução à Microec",
+          "Introd. à ADM",
+          "Português/Mét. De Pesq.",
+          "Contabilidade Empresarial",
+          "Matemática",
+          "ICC I",
+          "Português",
+        ],
+        adm3: [
+          "Empreendedorismo",
+          "Legislaç. Tributária",
+          "Análise de Custos",
+          "Estatística Básica",
+          "Analise Financeiras de Balanços",
+        ],
+        adm5: [
+          "Empreendedorismo",
+          "Legislaç. Tributária",
+          "Análise de Custos",
+          "Estatística Básica",
+          "Analise Financeiras de Balanços",
+          "Legislação Trabalhista",
+          "Tópicos Avançados",
+          "Psicologia",
+        ],
+        adm6: [
+          "RH I",
+          "Logística",
+          "Pesquisa Operacional",
+          "Economia Bras /Tópicos Avan",
+          "Legislação Trabalhista",
+          "Tópicos Avançados",
+          "Psicologia",
+        ],
+        adm7: [
+          "RH I",
+          "Logística",
+          "Pesquisa Operacional",
+          "Economia Bras /Tópicos Avan",
+          "Legislação Trabalhista",
+          "Tópicos Avançados",
+          "Psicologia",
+        ],
+        adm8: [
+          "Adm. Estratégica II",
+          "Logística",
+          "Português",
+          "Economia Bras /Tópicos Avan",
+          "Adm. Da Produção II",
+        ],
+        contabeis5: [
+          "Gestão de Pessoas",
+          "Contabilidade Rural",
+          "Análise de Custos (ADM)",
+          "Tópicos de Contabilidade I",
+          "Legislação Trabalhista",
+          "Psicologia",
+        ],
+        contabeis7: [
+          "Aval de Invest Valuation",
+          "Contabilidade Rural",
+          "Planej. Est. E Orç Empres.",
+          "Tópicos de Contabilidade I",
+          "TCC II",
+          "Psicologia",
+        ],
+        contabeis8: [
+          "Gestão de Pessoas",
+          "Contabilidade Rural",
+          "Tópicos de Contabilidade I",
+          "TCC II",
+          "Psicologia",
+          "Tóp. Cont. II",
+          "Controladoria EAD",
+        ],
+        pedagogia1: [
+          "Língua Portuguesa Gramática",
+          "Prática Interdisciplinares para docência I",
+          "Prática de extensão I",
+          "História da Educação",
+          "Fund. Antropológicos da educação",
+          " Filosofia da Educação",
+        ],
+        //EAD
         rh: [
           "Gestão por Competência",
           "Atração e Seleção de Talentos",
-          //"Capacitação e Desenvolvimento de Talentos",
-          // "Gestão de Desenpenho",
-          // "Remuneração de Desempenho",
-          // "Gestão de Carreiras",
-          // "Projeto III - Plano de Ação",
+          "Capacitação e Desenvolvimento de Talentos",
+          "Gestão de Desenpenho",
+          "Remuneração de Desempenho",
+          "Gestão de Carreiras",
+          "Projeto III - Plano de Ação",
         ],
-        pedagogia: ["Didática", "História da Educação", "Educação Infantil"],
+        adm1_ead: [
+          "Português",
+          "Matemática",
+          "Método de Pesquisa",
+          "Int. à Microeconomia",
+          "Contabilidade Empresarial I",
+          "Int. à Administração I",
+          "Int. à Computação I",
+        ],
+        adm2_ead: ["teoria das organizações", "matematica aplicada a adm"],
+        adm3_ead: [
+          "Análise de Custo",
+          "Legislação Tributária",
+          "Estatística Básica",
+          "Análise Financeira de Balanço",
+          "Empreendedorismo",
+        ],
+        adm5_ead: [
+          "Estatística Aplicada adm",
+          "Administração Financeira II",
+          "adm estrategica I",
+          "Adm. de Marketing",
+          "Adm. de Produção II",
+          "psicologia",
+        ],
+        adm7_ead: [
+          "Trabalho de Conclusão de Curso II",
+          "Cadeia de Suprimento e Logística",
+          "legislação trabalhista",
+          "pesquisa operacional",
+          "Economia Brasileira",
+          "adm recursos humanos I",
+          "topicos avançados em gestao de neg",
+        ],
+        contabeis1_ead: ["Teoria Economica I - microeconomia"],
+        contabeis3_ead: [
+          "Contabilidade Intermediária",
+          "Contabilidade de Custos",
+          "Introdução à Probabilidade",
+          "Teoria da Contabilidade",
+          "Comunicação Oral e Escrita",
+          "Laboratório de Informática",
+        ],
+        contabeis5_ead: [
+          "Análise das Demonstrações",
+          "Contabilidade e Legislação",
+          "Contabilidade governamental",
+          "Administração Financeira I",
+          "Int. às Ciências Sociais",
+          "Metodologia cientifica",
+        ],
+        contabeis6_ead: ["Planejamento Tributário"],
+        contabeis7_ead: [
+          "Planejamento Estratégico e Orçamento",
+          "Contabilidade Rural",
+          "Avaliação de Investimentos e Valuetion",
+          "Trabalho de Conclusão de Curso II",
+          "Controladoria e Riscos das Inst",
+          "Tópicos de Contabilidade I",
+        ],
+        contabeis8_ead: [
+          "Elaboração e Análide de Projetos",
+          "topicos de contabilidade II",
+          "gestão de pessoas",
+          "Controladoria",
+          "Jogo de Empresas/Bolsa",
+          "Perícia Contábil",
+        ],
+        pedagogia1_ead: [
+          "praticas interdiciplinares p docencia I",
+          "historia da educação I",
+          "interpretação e produção de texto",
+          "praticas de extensão I (projeto)",
+          "fund antropologicos da educação",
+          "psicologia da educação",
+          "filosofia da educação",
+        ],
+        pedagogia3_ead: [
+          "pesquisa e extensao em educação III (projeto)",
+          "fund prat educação inclusiva",
+          "diversidade cultural, etnia e genero",
+          "praticas interdiciplinares para docencia III",
+          "currilo teoria e pratica",
+          "educação trabalho movimento",
+          "libras",
+        ],
+        pedagogia5_ead: [
+          "praticas interdiciplinares para docencia V",
+          "fund e prat da gestão escolar",
+          "pratica de ensino e estagio na edcação infantil",
+          "educa corporal jogos e recreação",
+          "fund teoricos e estudos psiccogeneticos em alfab",
+          "fund prat educação ambiental",
+        ],
+        pedagogia7_ead: [
+          "fund prat ensino historia",
+          "pedagogia social",
+          "fund prat alfabetização e letramento II",
+          "fun prat ciencias",
+          "comp matematica para ensino fundamental",
+        ],
       };
 
       const perguntas = [
@@ -122,13 +530,13 @@
           html += `<tr><td>${p}</td>`;
           disciplinas.forEach((d, j) => {
             html += `<td><select name="resp_${i}_${j}" required>
-                      <option value="">-</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                    </select></td>`;
+                            <option value="">-</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select></td>`;
           });
           html += "</tr>";
         });
